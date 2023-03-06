@@ -155,3 +155,273 @@ link.addEventListener('click',()=> {
     window.open(URL,"ventana1","width=400,height=600,scrollbars=NO") 
      
 });
+
+// Validación formulario
+const nombre = document.getElementById("nombre");
+const email = document.getElementById("email");
+const mensaje = document.getElementById("mensaje");
+const form = document.getElementById("form");
+//const parrafo = document.getElementById("warnings");
+
+form.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    //let warnings = "";
+
+    let banderaError = false;
+
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+    //parrafo.innerHTML = "";
+
+    if(nombre.value.length < 3){
+
+        //warnings +=  `El nombre no es válido <br>`;
+        banderaError = true;
+    }
+    
+    if(!regexEmail.test(email.value)){
+
+        //warnings += `El email no es válido <br>`;
+        banderaError = true;
+    }
+    if(mensaje.value.length < 4){
+        
+        //warnings +=  `El mensaje es demasiado corto <br>`;
+        banderaError = true;
+    }
+    
+    if(banderaError){
+        //parrafo.innerHTML = warnings;
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Algo salió mal!',
+            footer: '<a href="#contacto">Completa los campos del formulario.</a>',
+            
+            confirmButtonColor: '#ff0000',
+            
+            confirmButtonText: 'Ok!'
+        })
+
+
+    } else {
+        //parrafo.innerHTML = "Enviado";
+
+        // Ejecución libreria SweetAlert2
+        Swal.fire({
+            title: '¿Enviar formulario?',
+            text: `Se van a enviar los datos del formulario!`,
+            icon: 'question',//'warning'
+            showCancelButton: true,
+            confirmButtonColor: '#00FF00',//'#3085d6'
+            cancelButtonColor: '#FF0000',//'#d33'
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sí,  Enviar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //productosEnCarrito.length = 0; // Establece que el array sea de 0 elementos
+
+                // Actualizar el "localStorage"
+                //localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+
+                //cargarProductosCarrito(); // EJECUCION DE LA FUNCION.
+
+                /*Swal.fire(
+                    'Enviado!',
+                    'Tus datos han sido enviados.',
+                    'success'
+                )
+                */
+                Swal.fire({
+                    title: 'Enviado!',
+                    text: `Tus datos han sido enviados.`,
+                    icon: 'success',//'warning'
+                    
+                    confirmButtonColor: '#00FF00',//'#3085d6'
+                    
+                    
+                    confirmButtonText: 'OK!'
+                })
+            }
+        })
+    }
+});
+
+nombre.addEventListener("blur", function (e){
+    const field = e.target;
+    const fieldValue = e.target.value;
+
+    field.nextElementSibling.innerText = "";
+
+    if(fieldValue.length===0 || fieldValue.length < 3){
+        
+        field.classList.remove("valid")
+        field.classList.add("invalid");
+        field.nextElementSibling.classList.add("error");
+        field.nextElementSibling.innerText = "Requerido";
+        nombre.value = "";
+        nombre.focus();
+
+    }else{
+        field.classList.remove("invalid");
+        field.classList.add("valid")
+    }
+});
+
+email.addEventListener("blur", function (e){
+    const field = e.target;
+    const fieldValue = e.target.value;
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    field.nextElementSibling.innerText = "";
+
+    if(!regexEmail.test(fieldValue)){
+        
+        field.classList.remove("valid")
+        field.classList.add("invalid");
+        field.nextElementSibling.classList.add("error");
+        field.nextElementSibling.innerText = "Ingresa un e-mail válido";
+        email.value = "";
+        email.focus();
+
+    }else{
+        field.classList.remove("invalid");
+        field.classList.add("valid")
+    }
+});
+
+mensaje.addEventListener("blur", function (e){
+    const field = e.target;
+    const fieldValue = e.target.value;
+
+    field.nextElementSibling.innerText = "";
+
+    if(fieldValue.length < 4){
+        
+        field.classList.remove("valid")
+        field.classList.add("invalid");
+        field.nextElementSibling.classList.add("error");
+        field.nextElementSibling.innerText = "Requerido";
+        mensaje.value = "";
+        mensaje.focus();
+
+    }else{
+        field.classList.remove("invalid");
+        field.classList.add("valid")
+    }
+});
+
+
+// Barras Animadas 
+const softSkills = document.querySelector("#soft-skills");
+const barras = document.querySelectorAll(".progress-bar");
+const btn1 = document.querySelector("#btn1");
+
+const porcentajes = [];
+let i=0;
+
+barras.forEach(barra => {
+    
+    porcentajes[i] = parseInt(barra.innerHTML.slice(0, -1));
+    i++;
+
+});
+
+softSkills.addEventListener("mouseenter", (e) =>{
+    
+    let progreso = [0,0,0,0];
+    let prog1= "";
+
+    let intervalo = [];
+    
+    intervalo[0] = setInterval(function(){
+
+        progreso[0] = progreso[0] + 1;
+        prog1= progreso[0].toString()+"%";
+        
+        
+        
+        barras[0].style.width = prog1; 
+        barras[0].style.fontSize = "1.5rem";
+        barras[0].setAttribute("aria-valuenow", prog1);
+        barras[0].innerText = prog1;
+        console.log(progreso[0]);
+
+        if(progreso[0]>=porcentajes[0]){
+            clearInterval(intervalo[0]);
+        }
+        
+    },30);
+
+    intervalo[1] = setInterval(function(){
+
+        progreso[1] = progreso[1] + 1;
+        prog1= progreso[1].toString()+"%";
+        
+        
+        
+        barras[1].style.width = prog1; 
+        barras[1].style.fontSize = "1.5rem";
+        barras[1].setAttribute("aria-valuenow", prog1);
+        barras[1].innerText = prog1;
+        console.log(progreso[1]);
+
+        if(progreso[1]>=porcentajes[1]){
+            clearInterval(intervalo[1]);
+        }
+        
+    },30);
+
+    intervalo[2] = setInterval(function(){
+
+        progreso[2] = progreso[2] + 1;
+        prog1= progreso[2].toString()+"%";
+        
+        
+        
+        barras[2].style.width = prog1; 
+        barras[2].style.fontSize = "1.5rem";
+        barras[2].setAttribute("aria-valuenow", prog1);
+        barras[2].innerText = prog1;
+        console.log(progreso[2]);
+
+        if(progreso[2]>=porcentajes[2]){
+            clearInterval(intervalo[2]);
+        }
+        
+    },30);
+
+    intervalo[3] = setInterval(function(){
+
+        progreso[3] = progreso[3] + 1;
+        prog1= progreso[3].toString()+"%";
+        
+        
+        
+        barras[3].style.width = prog1;
+        barras[3].style.fontSize = "1.5rem";
+        barras[3].setAttribute("aria-valuenow", prog1);
+        barras[3].innerText = prog1;
+        console.log(progreso[3]);
+
+        if(progreso[3]>=porcentajes[3]){
+            clearInterval(intervalo[3]);
+        }
+        
+    },30);
+    
+
+    softSkills.addEventListener("mouseleave", (e) =>{
+       
+        for(i=0; i<porcentajes.length; i++){
+
+        clearInterval(intervalo[i]);
+        barras[i].style.width = "0";
+       }
+       
+    });
+    
+});

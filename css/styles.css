@@ -643,6 +643,39 @@ section#hero{
     0%{width: 0;}
     100%{width: 25%;}
 }
+.soft-skills{
+    background: url(../img/bg.jpg) no-repeat center;
+    background-size: cover;
+}
+.soft-skills h1{
+    margin: 0;
+    text-align: center;
+    padding: 15px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-family: Alegreya-Bold, sans-serif;
+    font-size: 2em;
+}
+
+.soft-skills .soft-desc {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-left: .5rem;
+}
+.soft-desc p{
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: Alegreya-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.soft-skills .progress{
+    height: 3rem; 
+    border: 1px solid rgba(0, 255, 255, 0.884);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.884);
+}
+
 
 .hr2 hr{
     border: rgba(8, 46, 151, 0.5) 2px solid;
@@ -813,30 +846,22 @@ h1{
     background-color: #007bff;
 }
 
-.social1{
-    margin: 20px 0px 0px;
-    
-    
-}
-
-.social1 .links{
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social1 .links a{
-    color: grey;
-    margin: 0 30px;
-}
-
-.social1 .links a i{
-    font-size: 3rem;
-}
-
 .right-form a:hover {
     color: #007bff;
+}
+
+
+.invalid {
+    border: solid 1px red;
+    box-shadow: 0 0 10px red;
+}
+.error{
+    color:red;
+    display: block;
+}
+.valid{
+    border: solid 1px #39FF14;
+    box-shadow: 0 0 10px #39FF14;
 }
 
 section.contacto {
@@ -1145,6 +1170,15 @@ section.contacto {
     #experiencia-laboral > div > div > table > tbody > tr > td > ul > li{
         margin-left: 15px;
     }
+
+    .soft-skills h1{
+        font-family: Alegreya-Bold, sans-serif;
+        font-size: 1.2rem;
+    }
+    
+    .soft-desc p{
+        font-size: 1rem;
+    }
 }
 
 
@@ -1217,6 +1251,10 @@ section.contacto {
     }
     .modal-centro {
         width: 95%;
+    }
+
+    .error {
+        font-size: 15px;
     }
 }
 

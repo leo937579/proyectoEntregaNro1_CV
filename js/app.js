@@ -161,40 +161,31 @@ const nombre = document.getElementById("nombre");
 const email = document.getElementById("email");
 const mensaje = document.getElementById("mensaje");
 const form = document.getElementById("form");
-//const parrafo = document.getElementById("warnings");
 
 form.addEventListener("submit", (e) => {
 
     e.preventDefault();
 
-    //let warnings = "";
-
     let banderaError = false;
 
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-
-    //parrafo.innerHTML = "";
-
     if(nombre.value.length < 3){
 
-        //warnings +=  `El nombre no es válido <br>`;
         banderaError = true;
     }
     
     if(!regexEmail.test(email.value)){
 
-        //warnings += `El email no es válido <br>`;
         banderaError = true;
     }
     if(mensaje.value.length < 4){
-        
-        //warnings +=  `El mensaje es demasiado corto <br>`;
+    
         banderaError = true;
     }
     
     if(banderaError){
-        //parrafo.innerHTML = warnings;
+        
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -208,39 +199,25 @@ form.addEventListener("submit", (e) => {
 
 
     } else {
-        //parrafo.innerHTML = "Enviado";
-
-        // Ejecución libreria SweetAlert2
+        
         Swal.fire({
             title: '¿Enviar formulario?',
             text: `Se van a enviar los datos del formulario!`,
             icon: 'question',//'warning'
             showCancelButton: true,
-            confirmButtonColor: '#00FF00',//'#3085d6'
-            cancelButtonColor: '#FF0000',//'#d33'
+            confirmButtonColor: '#00FF00',
+            cancelButtonColor: '#FF0000',
             cancelButtonText: 'Cancelar',
             confirmButtonText: 'Sí,  Enviar!'
         }).then((result) => {
             if (result.isConfirmed) {
-                //productosEnCarrito.length = 0; // Establece que el array sea de 0 elementos
-
-                // Actualizar el "localStorage"
-                //localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-
-                //cargarProductosCarrito(); // EJECUCION DE LA FUNCION.
-
-                /*Swal.fire(
-                    'Enviado!',
-                    'Tus datos han sido enviados.',
-                    'success'
-                )
-                */
+                
                 Swal.fire({
                     title: 'Enviado!',
                     text: `Tus datos han sido enviados.`,
                     icon: 'success',//'warning'
                     
-                    confirmButtonColor: '#00FF00',//'#3085d6'
+                    confirmButtonColor: '#00FF00',
                     
                     
                     confirmButtonText: 'OK!'
@@ -348,7 +325,7 @@ softSkills.addEventListener("mouseenter", (e) =>{
         barras[0].style.fontSize = "1.5rem";
         barras[0].setAttribute("aria-valuenow", prog1);
         barras[0].innerText = prog1;
-        console.log(progreso[0]);
+        //console.log(progreso[0]);
 
         if(progreso[0]>=porcentajes[0]){
             clearInterval(intervalo[0]);
@@ -367,7 +344,7 @@ softSkills.addEventListener("mouseenter", (e) =>{
         barras[1].style.fontSize = "1.5rem";
         barras[1].setAttribute("aria-valuenow", prog1);
         barras[1].innerText = prog1;
-        console.log(progreso[1]);
+        //console.log(progreso[1]);
 
         if(progreso[1]>=porcentajes[1]){
             clearInterval(intervalo[1]);
@@ -386,7 +363,7 @@ softSkills.addEventListener("mouseenter", (e) =>{
         barras[2].style.fontSize = "1.5rem";
         barras[2].setAttribute("aria-valuenow", prog1);
         barras[2].innerText = prog1;
-        console.log(progreso[2]);
+        //console.log(progreso[2]);
 
         if(progreso[2]>=porcentajes[2]){
             clearInterval(intervalo[2]);
@@ -405,7 +382,7 @@ softSkills.addEventListener("mouseenter", (e) =>{
         barras[3].style.fontSize = "1.5rem";
         barras[3].setAttribute("aria-valuenow", prog1);
         barras[3].innerText = prog1;
-        console.log(progreso[3]);
+        //console.log(progreso[3]);
 
         if(progreso[3]>=porcentajes[3]){
             clearInterval(intervalo[3]);

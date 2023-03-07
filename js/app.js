@@ -399,6 +399,6 @@ softSkills.addEventListener("mouseenter", (e) =>{
         barras[i].style.width = "0";
        }
        
-    });
-    
+    }); 
 });
+//end

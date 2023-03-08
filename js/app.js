@@ -158,6 +158,7 @@ link.addEventListener('click',()=> {
 
 // Validación formulario
 const nombre = document.getElementById("nombre");
+const asunto = document.getElementById("asunto");
 const email = document.getElementById("email");
 const mensaje = document.getElementById("mensaje");
 const form = document.getElementById("form");
@@ -225,6 +226,11 @@ form.addEventListener("submit", (e) => {
             }
         })
     }
+
+    nombre.value = "";
+    asunto.value = "";
+    email.value = "";
+    mensaje.value = "";
 });
 
 nombre.addEventListener("blur", function (e){
